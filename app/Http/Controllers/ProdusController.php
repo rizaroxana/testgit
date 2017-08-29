@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\ProdusRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -38,7 +39,7 @@ class ProdusController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -49,7 +50,13 @@ class ProdusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('produs')->insert([
+                'nume' => $request->input('nume'),
+                'descriere' => $request->input('descriere'),
+                'status' => $request->input('status')]
+        );
+
+        return redirect()->route('produse');
     }
 
     /**
@@ -95,5 +102,39 @@ class ProdusController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function intrari($productId)
+    {
+        $intrari = DB::table('intrari')->where('produs_id', $productId)->get();
+        return view('index_intrari',compact('intrari','productId'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createIntrare()
+    {
+        return view('create_intrare');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeIntrare(Request $request)
+    {
+        DB::table('intrari')->insert([
+                'produs_id' => $request->input('productId'),
+                'buc' => $request->input('buc'),
+                'created_at' => Carbon::now()->toDateTimeString()]
+        );
+
+        //event pt update nr total bucati pe produs
+        return redirect()->route('produse');
     }
 }

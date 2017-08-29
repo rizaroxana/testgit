@@ -14,4 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/produse', 'ProdusController@index');
+Route::get('/produse', 'ProdusController@index')->name('produse');
+Route::get('/produs/create', 'ProdusController@create');
+Route::post('/produs', 'ProdusController@store');
+Route::get('/produs/intrari/{productId}', 'ProdusController@intrari');
+Route::get('/produs/intrare/{productId}', function ($productId) {
+    return view('create_intrare',compact('productId'));
+
+});
+Route::post('/produs/intrare', 'ProdusController@storeIntrare');

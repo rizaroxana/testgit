@@ -6,9 +6,10 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Category slug</th>
-                <th>Type</th>
-                <th>Parent ID</th>
+                <th>Nume produs</th>
+                <th>Bucati disponibile</th>
+                <th>Status</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
@@ -22,9 +23,11 @@
                 <td>{{$produs->buc}}</td>
                 <td>{{$produs->status}}</td>
                 <td><a href="{{url('/category/delete', $produs->id)}}" class="btn btn-danger" data-method="delete">Delete</a></td>
+                <td><a href="{{url('/produs/intrari', $produs->id)}}" class="btn btn-danger" data-method="delete">Intrari</a></td>
+
             </tr>
             @endforeach
-            <a href="{{ url('/category/create') }}" class="btn btn-success"> Adaugare produs no </a>
+            <a href="{{ url('/produs/create') }}" class="btn btn-success"> Adaugare produs nou </a>
             </tbody>
         </table>
     </div>
