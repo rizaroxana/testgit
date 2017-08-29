@@ -1,0 +1,4 @@
+[Tue Aug 29 21:40:48.986946 2017] [proxy:debug] [pid 2088:tid 224] proxy_util.c(1772): AH00924: worker ajp://127.0.0.1/examples shared already initialized
+[Tue Aug 29 21:40:48.986946 2017] [proxy:debug] [pid 2088:tid 224] proxy_util.c(1814): AH00926: worker ajp://127.0.0.1/examples local already initialized
+[Tue Aug 29 21:41:23.057250 2017] [proxy:debug] [pid 6616:tid 228] proxy_util.c(1772): AH00924: worker ajp://127.0.0.1/examples shared already initialized
+[Tue Aug 29 21:41:23.058250 2017] [proxy:debug] [pid 6616:tid 228] proxy_util.c(1814): AH00926: worker ajp://127.0.0.1/examples local already initialized
